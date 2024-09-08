@@ -1,6 +1,11 @@
 ## Add plugin for dev
 Copy plugins from folder wp-content/plugins-dev to wp-content/plugins
 
+## Folder has too big size
+- uploads
+- ai1wm-backups
+- plugins
+
 ## Change domain to local
 UPDATE csl_options 
 SET 
