@@ -1,4 +1,6 @@
 <?php
+define( 'WP_CACHE', false ); // By Speed Optimizer by SiteGround
+
 /**
  * The base configuration for WordPress
  *
@@ -38,9 +40,6 @@ define( 'DB_CHARSET', 'utf8' );
 /** The database collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
 
-define('WP_HOME', 'http://localhost:8080');
-define('WP_SITEURL', 'http://localhost:8080');
-
 /**#@+
  * Authentication unique keys and salts.
  *
@@ -52,15 +51,15 @@ define('WP_SITEURL', 'http://localhost:8080');
  *
  * @since 2.6.0
  */
-define( 'AUTH_KEY',          'Z;h#;1Eg*g:Bp&I2v[O~*Z}gD)tUTy*1x9:2+}jo??h*7)dX!IdYeXIvZVoPJfxJ' );
-define( 'SECURE_AUTH_KEY',   '=hXqbeQwS,N)3tZ67->P7Ok2S&iIhCqI;|G~~kU;W|Z#eRP,?#[ ^ R 5ICCqO1a' );
-define( 'LOGGED_IN_KEY',     '>c.dzA_t+b$RM[Fvq,T$0s8pHZb/i5ivH8zL!iIyL0>2#(u=[+ -9!Eg{zOv+?>P' );
-define( 'NONCE_KEY',         'K&oSC7fs,u-mf(mgztX`1U2*$}i^Vo>lEYt1~!o|M;8be#}>mu+bYO[ WwJ_d*B1' );
-define( 'AUTH_SALT',         '+eTU*7dA^Tlmx)Uh.NUKFi[B=h+:4#Fxk!1p_/g^, TF#Ck|ZX(7tmRa);Nq(+?1' );
-define( 'SECURE_AUTH_SALT',  'It)$]/(1WdwZNNrpkAOL_MJcI;?Z#UsVy^{t9L%zAdk]%Q^{8J^yqM^o4E72;Nn,' );
-define( 'LOGGED_IN_SALT',    '=ZwHLKYw<]/K${qdKc9fCrv5aB}L2h&boe7=6[OvoO97P:p@WoT7/|Q%tqFeS8< ' );
-define( 'NONCE_SALT',        'mPrY7-x-m(odD%>gqD{n2p;M*7K*rGW+D:c=TZtP*+GaGP2OGwI*c]fE%YQ{[NmU' );
-define( 'WP_CACHE_KEY_SALT', '<~) hsvj*SsQPbbONx|~IbM`yQmSSzAO(G9}7*3H7*m*5nkt #y*O#?yd,?rO%?n' );
+define( 'AUTH_KEY',          '@2OW3B5t|9hgC.$2C>0]b5/=ijL{Ke0E?|:NKyGVqNj[d<4upHfAY36v^7?+_9*B' );
+define( 'SECURE_AUTH_KEY',   ':cES`=lBE{r7A5+RX7CVyF[Y;=G#Q0b$pb:W$gufHIL`_6a!K9/~OK.G%It:ro3B' );
+define( 'LOGGED_IN_KEY',     '!!20UgxX:B`H!% K`HUz`DnPA]i>|+2YmkBvkf=)@4tm$t+u9x8A:+<E)axzA+Vx' );
+define( 'NONCE_KEY',         'i}E)C~~9+BPXBOY,jv>Q6Rz,m>V=;Vp(3SzX!v+mzFZ4f&QQ?=ElRHi@.#U!gqNX' );
+define( 'AUTH_SALT',         'w4O4E)2YEtyuB@rU0zl2qqdKcf1V;5!`[8n;VA>r.}@t#p+X!3;<e^1fo);{%llA' );
+define( 'SECURE_AUTH_SALT',  'Ul@e^e@E?x[~S*Bm@Y?F&$HRT(n{[h1,fMm%>FA#51W^U]g~XMqcNw:JAkA!-XG1' );
+define( 'LOGGED_IN_SALT',    ':n. G(34MX@b)MTarB*}qHc^s[%fb*I)C|hJoHKJ2PF!3~&qik_k>GHUb)o0rWyh' );
+define( 'NONCE_SALT',        'B>W,_~b Z@O`ff#x9k]d]#5)gu-cLfIt#+}O;~R]crx[v%5UZ8Bi[((q}{ZP:yjC' );
+define( 'WP_CACHE_KEY_SALT', 'XL.f%q2ju/`0#X.LzvxT}-qcWH%u]@@=^xwM(2Obe57~L]>|+>oA_i/TS8` fIg4' );
 
 
 /**#@-*/
@@ -71,7 +70,7 @@ define( 'WP_CACHE_KEY_SALT', '<~) hsvj*SsQPbbONx|~IbM`yQmSSzAO(G9}7*3H7*m*5nkt #
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix = 'wp_';
+$table_prefix = 'csl_';
 
 
 /* Add any custom values between this line and the "stop editing" line. */
@@ -91,7 +90,9 @@ $table_prefix = 'wp_';
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
 if ( ! defined( 'WP_DEBUG' ) ) {
-	define( 'WP_DEBUG', false );
+	define('WP_DEBUG', true);
+	define('WP_DEBUG_LOG', true);
+	define('WP_DEBUG_DISPLAY', true); 
 }
 
 /* That's all, stop editing! Happy publishing. */
@@ -102,4 +103,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /** Sets up WordPress vars and included files. */
+@include_once('/var/lib/sec/wp-settings-pre.php'); // Added by SiteGround WordPress management system
 require_once ABSPATH . 'wp-settings.php';
+@include_once('/var/lib/sec/wp-settings.php'); // Added by SiteGround WordPress management system
