@@ -7,6 +7,8 @@ Copy plugins from folder wp-content/plugins-dev to wp-content/plugins
 - plugins
 
 ## Change domain to local
+https://www.hostinger.com/tutorials/wordpress/how-to-change-wordpress-urls-in-mysql-database-using-phpmyadmin
+
 UPDATE csl_options 
 SET 
     option_value = REPLACE(option_value,
