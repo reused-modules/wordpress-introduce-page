@@ -71,7 +71,7 @@ define( 'WP_CACHE_KEY_SALT', '<~) hsvj*SsQPbbONx|~IbM`yQmSSzAO(G9}7*3H7*m*5nkt #
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix = 'wp_';
+$table_prefix = 'csl_';
 
 
 /* Add any custom values between this line and the "stop editing" line. */
@@ -91,7 +91,9 @@ $table_prefix = 'wp_';
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
 if ( ! defined( 'WP_DEBUG' ) ) {
-	define( 'WP_DEBUG', false );
+	define('WP_DEBUG', true);
+	define('WP_DEBUG_LOG', true);
+	define('WP_DEBUG_DISPLAY', false);
 }
 
 /* That's all, stop editing! Happy publishing. */
