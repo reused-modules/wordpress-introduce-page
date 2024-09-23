@@ -4,7 +4,7 @@
         <div class="row">
             <!-- logo footer -->
             <div class="col-md-6 logo-footer">
-                <a href="#"><img src="<?= get_template_directory_uri() ?>images/logo-footer.png"></a>
+                <a href="#"><img src="<?= get_template_directory_uri() ?>/assets/images/logo-footer.png"></a>
             </div>
             <!-- /logo footer -->
 
