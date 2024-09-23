@@ -1,5 +1,9 @@
 <?php
     get_header();
+    // get post about us
+    $our_story_post = get_post_by_name('our-story');
+    $local_perspective_post = get_post_by_name('local-perspective');
+    $hidden_gems_post = get_post_by_name('hidden-gems');
 ?>
 <!-- docs -->
 <div class="bs-docs-header">
@@ -51,13 +55,13 @@
         <div class="box-out-story">
             <div class="row box-margin">
                 <div class="col-md-6 col-12">
-                    <img src="<?= get_template_directory_uri() ?>/assets/images/home/out-story-2.jpg" width="643"/>
+                    <img src="<?= get_the_post_thumbnail_url($our_story_post->ID) ?>" width="643"/>
                 </div>
                 <div class="col-md-6 col-12">
-                    <h2>Our Story</h2>
-                    <p>Hi, this is Ryan from The Local Besties. I create this travel blog to help travelers discover hidden gems and authentic encounters through locals’ eyes.</p>
+                    <h2><?= $our_story_post->post_title ?></h2>
+                    <p><?= $our_story_post->post_content ?></p>
                     <div class="btn-detail">
-                        <a href="#" class="btn">Get started</a>
+                        <a href="<?= get_permalink($our_story_post->ID) ?>" class="btn">Learn more</a>
                     </div>
                 </div>
             </div>
@@ -110,25 +114,25 @@
             </div>
             <div class="row box-margin">
                 <div class="col-xl-6 col-md-6 col-12 box-why-body">
-                    <h2>Local Perspective</h2>
-                    <p>Unlock the essence of each destination with our personalized approach to travel, designed to enrich your journey beyond the ordinary.</p>
+                    <h2><?= $local_perspective_post->post_title ?></h2>
+                    <p><?= $local_perspective_post->post_content ?></p>
                     <div class="btn-detail">
-                        <a href="#" class="btn">Learn more</a>
+                        <a href="<?= get_permalink($local_perspective_post->ID) ?>" class="btn">Learn more</a>
                     </div>
                 </div>
                 <div class="col-xl-6 col-md-6 col-12">
-                    <a href="#"><img src="<?= get_template_directory_uri() ?>/assets/images/home/out-story.jpg" width="643"/></a>
+                    <a href="<?= get_permalink($local_perspective_post->ID) ?>"><img src="<?= get_the_post_thumbnail_url($local_perspective_post->ID) ?>" width="643"/></a>
                 </div>
             </div>
             <div class="row box-margin">
                 <div class="col-xl-6 col-md-6 col-12 box-why-body">
-                    <a href="#"><img src="<?= get_template_directory_uri() ?>/assets/images/home/out-story-2.jpg" width="643"/></a>
+                    <a href="<?= get_permalink($hidden_gems_post->ID) ?>"><img src="<?= get_the_post_thumbnail_url($hidden_gems_post->ID) ?>" width="643"/></a>
                 </div>
                 <div class="col-xl-6 col-md-6 col-12">
-                    <h2>Local Perspective</h2>
-                    <p>Unlock the essence of each destination with our personalized approach to travel, designed to enrich your journey beyond the ordinary.</p>
+                    <h2><?= $hidden_gems_post->post_title ?></h2>
+                    <p><?= $hidden_gems_post->post_content ?></p>
                     <div class="btn-detail">
-                        <a href="#" class="btn">Learn more</a>
+                        <a href="<?= get_permalink($hidden_gems_post->ID) ?>" class="btn">Learn more</a>
                     </div>
                 </div>
             </div>

@@ -1,8 +1,13 @@
 <?php
     get_template_part( 'templates/head' );
-    $categories = get_terms();
+    $locations = get_nav_menu_locations();
+    $menu = get_term( $locations['primary-menu'], 'nav_menu' );
+    $menu_items = wp_get_nav_menu_items($menu->term_id);
+    $menu_items = recursive_mitems_to_array( $menu_items );
+//    echo
+//    $pages = wp_nav_menu(['theme_location' => 'primary-menu']);
 //    echo '<pre>';
-//    print_r($categories);die;
+//    print_r($menu_items);die;
 ?>
 <!-- header -->
 <header class="navbar navbar-static-top bs-docs-nav" id="top">
@@ -15,28 +20,26 @@
         <!-- menu pc -->
         <nav class="menu-pc">
             <ul class="nav-pc" id="menu-pc">
-                <li class="nav-first"><a class="nav-link" href="index.html">Home</a></li>
-                <li class="nav-first has-child">
-                    <a class="nav-link" href="category.html" >Plan</a>
-                    <ul class="dropdown-child">
-                        <li><a href="#">Categories 1</a></li>
-                        <li><a href="#">Categories 2</a></li>
-                        <li><a href="#">Categories 3</a></li>
-                    </ul>
-                </li>
-                <li class="nav-first"><a class="nav-link" href="category.html">Visit</a></li>
-                <li class="nav-first"><a class="nav-link" href="category.html">Eat</a></li>
-                <li class="nav-first"><a class="nav-link" href="category.html">Dip</a></li>
-                <li class="nav-first"><a class="nav-link" href="category.html">Contact</a></li>
-                <li class="nav-first has-child">
-                    <a class="nav-link" href="shop.html">Shop</a>
-                    <ul class="dropdown-child">
-                        <li><a href="#">Categories 1</a></li>
-                        <li><a href="#">Categories 2</a></li>
-                        <li><a href="#">Categories 3</a></li>
-                    </ul>
-                </li>
-                <li class="nav-first"><a class="nav-link" href="about.html">About</a></li>
+                <?php
+                    foreach ($menu_items as $menu_item) {
+                        ?>
+                        <li class="nav-first <?= $menu_item['childs'] ? 'has-child' : ''; ?>">
+                            <a class="nav-link" href="<?= $menu_item['item']->url ?>"><?= $menu_item['item']->title ?></a>
+                            <?php if ($menu_item['childs']) { ?>
+                                <ul class="dropdown-child">
+                                    <?php
+                                        foreach ($menu_item['childs'] as $child) {
+                                            ?>
+                                            <li><a href="<?= $child['item']->url ?>"><?= $child['item']->title ?></a></li>
+                                            <?php
+                                        }
+                                    ?>
+                                </ul>
+                            <?php } ?>
+                        </li>
+                        <?php
+                    }
+                ?>
             </ul>
         </nav>
         <!-- /menu pc -->
