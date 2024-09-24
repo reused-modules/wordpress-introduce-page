@@ -4,6 +4,10 @@
     $our_story_post = get_post_by_name('our-story');
     $local_perspective_post = get_post_by_name('local-perspective');
     $hidden_gems_post = get_post_by_name('hidden-gems');
+    $plan_featured_post = get_featured_post_by_category('plan');
+    $visit_featured_post = get_featured_post_by_category('visit');
+    $eat_featured_post = get_featured_post_by_category('eat');
+    $dip_featured_post = get_featured_post_by_category('dip');
 ?>
 <!-- docs -->
 <div class="bs-docs-header">
@@ -53,54 +57,36 @@
 
         <!-- box out story -->
         <div class="box-out-story">
-            <div class="row box-margin">
-                <div class="col-md-6 col-12">
-                    <img src="<?= get_the_post_thumbnail_url($our_story_post->ID) ?>" width="643"/>
-                </div>
-                <div class="col-md-6 col-12">
-                    <h2><?= $our_story_post->post_title ?></h2>
-                    <p><?= $our_story_post->post_content ?></p>
-                    <div class="btn-detail">
-                        <a href="<?= get_permalink($our_story_post->ID) ?>" class="btn">Learn more</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row box-margin box-out-story-body">
-                <div class="col-xl-3 col-md-6 col-12">
-                    <div class="box-os-body">
-                        <div class="box-os">
-                            <div class="box-os-img" style="background: url(https://wanderland.qodeinteractive.com/wp-content/uploads/2019/10/blog-post-img-03.jpg) center; height: 392px;">
-                                <h2>Plan</h2>
+            <?php
+                if ($our_story_post) {
+                    ?>
+                    <div class="row box-margin">
+                        <div class="col-md-6 col-12">
+                            <img src="<?= get_the_post_thumbnail_url($our_story_post->ID) ?>" width="643"/>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <h2><?= $our_story_post->post_title ?></h2>
+                            <p><?= wp_trim_words($our_story_post->post_content, 200) ?></p>
+                            <div class="btn-detail">
+                                <a href="<?= get_permalink($our_story_post->ID) ?>" class="btn">Learn more</a>
                             </div>
-                            <div class="box-line"></div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-3 col-md-6 col-12">
-                    <div class="box-os">
-                        <div class="box-os-img" class="box-os-img" style="background: url(https://wanderland.qodeinteractive.com/wp-content/uploads/2019/10/blog-post-img-05.jpg) center; height: 392px;">
-                            <h2>Plan</h2>
-                        </div>
-                        <div class="box-line"></div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6 col-12">
-                    <div class="box-os">
-                        <div class="box-os-img" style="background: url(<?= get_template_directory_uri() ?>/assets/images/home/img1.png) center; width: 217px; height: 392px;">
-                            <h2>Plan</h2>
-                        </div>
-                        <div class="box-line"></div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6 col-12">
-                    <div class="box-os">
-                        <div class="box-os-img" style="background: url(<?= get_template_directory_uri() ?>/assets/images/home/img1.png) center; width: 217px; height: 392px;">
-                            <h2>Plan</h2>
-                        </div>
-                        <div class="box-line"></div>
-                    </div>
+                    <?php
+                }
+            ?>
+            <!-- box explore -->
+            <div class="box-explore">
+                <div class="row box-explore-body">
+                    <?php
+                        get_template_part( 'templates/featured', 'post', ['featured_post' => $plan_featured_post, 'category_name' => 'Plan'] );
+                        get_template_part( 'templates/featured', 'post', ['featured_post' => $visit_featured_post, 'category_name' => 'Visit'] );
+                        get_template_part( 'templates/featured', 'post', ['featured_post' => $eat_featured_post, 'category_name' => 'Eat'] );
+                        get_template_part( 'templates/featured', 'post', ['featured_post' => $dip_featured_post, 'category_name' => 'Dip'] );
+                    ?>
                 </div>
             </div>
+            <!-- /box explore -->
         </div>
         <!-- /box out story -->
 
@@ -112,30 +98,43 @@
                     <p>Unlock the essence of each destination with our personalized approach to travel, designed to enrich your journey beyond the ordinary.</p>
                 </div>
             </div>
-            <div class="row box-margin">
-                <div class="col-xl-6 col-md-6 col-12 box-why-body">
-                    <h2><?= $local_perspective_post->post_title ?></h2>
-                    <p><?= $local_perspective_post->post_content ?></p>
-                    <div class="btn-detail">
-                        <a href="<?= get_permalink($local_perspective_post->ID) ?>" class="btn">Learn more</a>
+            <?php
+                if ($local_perspective_post) {
+                    ?>
+                    <div class="row box-margin">
+                        <div class="col-xl-6 col-md-6 col-12 box-why-body">
+                            <h2><?= $local_perspective_post->post_title ?></h2>
+                            <p><?= wp_trim_words($local_perspective_post->post_content, 200) ?></p>
+                            <div class="btn-detail">
+                                <a href="<?= get_permalink($local_perspective_post->ID) ?>" class="btn">Learn more</a>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-12">
+                            <a href="<?= get_permalink($local_perspective_post->ID) ?>"><img src="<?= get_the_post_thumbnail_url($local_perspective_post->ID) ?>" width="643"/></a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-xl-6 col-md-6 col-12">
-                    <a href="<?= get_permalink($local_perspective_post->ID) ?>"><img src="<?= get_the_post_thumbnail_url($local_perspective_post->ID) ?>" width="643"/></a>
-                </div>
-            </div>
-            <div class="row box-margin">
-                <div class="col-xl-6 col-md-6 col-12 box-why-body">
-                    <a href="<?= get_permalink($hidden_gems_post->ID) ?>"><img src="<?= get_the_post_thumbnail_url($hidden_gems_post->ID) ?>" width="643"/></a>
-                </div>
-                <div class="col-xl-6 col-md-6 col-12">
-                    <h2><?= $hidden_gems_post->post_title ?></h2>
-                    <p><?= $hidden_gems_post->post_content ?></p>
-                    <div class="btn-detail">
-                        <a href="<?= get_permalink($hidden_gems_post->ID) ?>" class="btn">Learn more</a>
+                    <?php
+                }
+            ?>
+            <?php
+                if ($hidden_gems_post) {
+                    ?>
+                    <div class="row box-margin">
+                        <div class="col-xl-6 col-md-6 col-12 box-why-body">
+                            <a href="<?= get_permalink($hidden_gems_post->ID) ?>"><img src="<?= get_the_post_thumbnail_url($hidden_gems_post->ID) ?>" width="643"/></a>
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-12">
+                            <h2><?= $hidden_gems_post->post_title ?></h2>
+                            <p><?= wp_trim_words($hidden_gems_post->post_content, 200) ?></p>
+                            <div class="btn-detail">
+                                <a href="<?= get_permalink($hidden_gems_post->ID) ?>" class="btn">Learn more</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                    <?php
+                }
+            ?>
+
         </div>
         <!-- /box  why choose us -->
     </div>

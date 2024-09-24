@@ -46,3 +46,24 @@ if (!function_exists('get_post_by_name')) {
         return $query->have_posts() ? reset($query->posts) : null;
     }
 }
+
+if (!function_exists('get_featured_post_by_category')) {
+    function get_featured_post_by_category(string $category_name)
+    {
+        $query = new WP_Query([
+            "post_type" => 'post',
+            "category_name" => $category_name,
+            'posts_per_page' => 1,
+            'orderby' => 'date',
+            'order' => 'DESC',
+            'meta_query' => array(
+                array(
+                    'key' => 'featured_post',
+                    'value' => true
+                )
+            )
+        ]);
+
+        return $query->have_posts() ? reset($query->posts) : null;
+    }
+}
