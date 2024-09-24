@@ -4,7 +4,7 @@
         <div class="row">
             <!-- logo footer -->
             <div class="col-md-6 logo-footer">
-                <a href="#"><img src="<?= get_template_directory_uri() ?>images/logo-footer.png"></a>
+                <a href="#"><img src="<?= get_template_directory_uri() ?>/assets/images/logo-footer.png"></a>
             </div>
             <!-- /logo footer -->
 
@@ -17,7 +17,7 @@
                     <div class="box-join-us-body">
                         <div class="box-join-us-form">
                             <select class="form-select" aria-label="Default select example" style="width: 184px;">
-                                <option selected>Coutry</option>
+                                <option selected>Country</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
