@@ -141,5 +141,9 @@
 </main>
 
 <?php
-    get_footer();
+    get_footer(null, [
+        'our_story_post' => $our_story_post,
+        'local_perspective_post' => $local_perspective_post,
+        'hidden_gems_post' => $hidden_gems_post,
+    ]);
 ?>
