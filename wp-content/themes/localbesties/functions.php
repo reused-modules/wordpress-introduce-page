@@ -48,12 +48,12 @@ if (!function_exists('get_post_by_name')) {
 }
 
 if (!function_exists('get_featured_post_by_category')) {
-    function get_featured_post_by_category(string $category_name)
+    function get_featured_post_by_category(string $category_name, int $limit = 1)
     {
         $query = new WP_Query([
             "post_type" => 'post',
             "category_name" => $category_name,
-            'posts_per_page' => 1,
+            'posts_per_page' => $limit,
             'orderby' => 'date',
             'order' => 'DESC',
             'meta_query' => array(
