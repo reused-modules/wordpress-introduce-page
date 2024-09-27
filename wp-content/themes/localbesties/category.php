@@ -1,4 +1,8 @@
 <?php
+if (get_query_var('post_type') === 'place') {
+    include_once 'category-place.php';
+    return;
+}
 get_header();
 
 $term = get_queried_object();
@@ -7,7 +11,7 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $args = array(
     'post_type' => 'post',
     'category_name' => $term->slug,
-    'posts_per_page' => 8,
+    'posts_per_page' => 1,
     'paged' => $paged,
     'orderby' => 'date',
     'order' => 'DESC'
@@ -73,7 +77,7 @@ $actual_link = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP
                         ?>
                         <div class="col-xl-3 col-md-6 col-12">
                             <?php the_post_thumbnail() ?>
-                            <h2><a href="<?php the_permalink(); ?>"><?php the_title() ?></a></h2>
+                            <h2><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
                             <p><?php the_excerpt() ?></p>
                         </div>
                     <?php
@@ -85,39 +89,7 @@ $actual_link = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP
         </div>
         <!-- /box-explore -->
 
-        <?php if ($the_query->max_num_pages > 1):
-            // Url cho parent
-            if ($parent_category_slug == $term->slug) {
-                $url_category = get_url_category($parent_category_slug);
-            } else { // Url cho child
-                $url_category = get_url_category($parent_category_slug, $term->slug);
-            }
-            ?>
-            <div class="box-paging">
-                <nav>
-                    <ul class="pagination">
-                        <li class="page-item <?php echo $paged == 1 ? 'disabled' : '' ?>">
-                            <a class="page-link"
-                               href="<?php echo $url_category . 'page/1' ?>"><</a>
-                        </li>
-                        <?php
-                        for ($page = 1; $page <= $the_query->max_num_pages; $page++):
-                            $url_page = $url_category . 'page/' . $page;
-                            ?>
-                            <li class="page-item <?php echo $page == $paged ? 'active' : '' ?>">
-                                <a class="page-link" href="<?php echo $url_page ?>"><?php echo $page ?></a>
-                            </li>
-                        <?php
-                        endfor;
-                        ?>
-                        <li class="page-item <?php echo $paged == $the_query->max_num_pages ? 'disabled' : '' ?>">
-                            <a class="page-link"
-                               href="<?php echo $url_category . 'page/' . $the_query->max_num_pages ?>">></a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        <?php endif; ?>
+        <?php include_once 'pagination.php' ?>
     </div>
 </main>
 
