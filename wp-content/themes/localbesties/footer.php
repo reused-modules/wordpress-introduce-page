@@ -1,4 +1,9 @@
 
+<?php
+    $our_story_post = $args['our_story_post'];
+    $local_perspective_post = $args['local_perspective_post'];
+    $hidden_gems_post = $args['hidden_gems_post'];
+?>
 <footer>
     <div class="container">
         <div class="row">
@@ -37,9 +42,11 @@
             <div class="col-link">
                 <h4>Travel Blogs</h4>
                 <ul>
-                    <li><a href="#">Bali Travel Guide</a></li>
-                    <li><a href="#">Sri Lanka Travel Guide</a></li>
-                    <li><a href="#">Peru Travel Guide</a></li>
+                    <li><a href="/plan">Plan</a></li>
+                    <li><a href="/visit">Visit</a></li>
+                    <li><a href="/eat">Eat</a></li>
+                    <li><a href="/dip">Dip</a></li>
+                    <li><a href="/shop">Shop</a></li>
                 </ul>
             </div>
             <div class="col-link">
@@ -53,8 +60,9 @@
             <div class="col-link col-about-us">
                 <h4>About us</h4>
                 <ul>
-                    <li><a href="#">Our story</a></li>
-                    <li><a href="#">Work with us</a></li>
+                    <li><a href="<?= get_permalink($our_story_post->ID) ?>"><?= $our_story_post->post_title ?></a></li>
+                    <li><a href="<?= get_permalink($local_perspective_post->ID) ?>"><?= $local_perspective_post->post_title ?></a></li>
+                    <li><a href="<?= get_permalink($hidden_gems_post->ID) ?>"><?= $hidden_gems_post->post_title ?></a></li>
                 </ul>
             </div>
             <div class="col-link">
