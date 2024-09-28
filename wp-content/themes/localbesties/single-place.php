@@ -42,14 +42,40 @@ get_header();
                 </div>
                 <div class="local-item">
                     <h4>Location</h4>
-                    <p><a href="<?php echo esc_attr( get_field('location_map_url') ); ?>"><?php echo esc_attr( get_field('location_map_url') ); ?></a></p>
+                    <p><a href="<?php echo esc_attr( get_field('location_map_url') ); ?>"><?php echo esc_html( get_field('address') ); ?></a></p>
                 </div>
                 <div class="local-item">
                     <h4>Information</h4>
-                    <p><a href="tel:<?php echo esc_html( get_field('tel') ); ?>"><?php echo esc_html( get_field('tel') ); ?></p>
+                    <p><a href="tel:<?php echo esc_html( get_field('tel') ); ?>"><?php echo esc_html( get_field('tel') ); ?></a></p>
                 </div>
             </div>
         </div>
     </main>
+    <div class="bg-menu-show"></div>
+    <div class="bg-popup-slider"></div>
+
+    <!-- Popup slider PC -->
+    <div class="popup-slider">
+        <div class="popup-slider-content">
+            <h1>close</h1>
+            <div class="popup-slider-close"><i class="fa fa-times" aria-hidden="true"></i></div>
+            <div class="popup-slider-body" id="popup-slider">
+                <div>
+                    <img src="<?= get_template_directory_uri() ?>/assets/images/home/out-story-2.jpg" alt="Slide 1">
+                </div>
+                <div>
+                    <img src="<?= get_template_directory_uri() ?>/assets/images/home/out-story.jpg" alt="Slide 2">
+                </div>
+                <div>
+                    <img src="<?= get_template_directory_uri() ?>/assets/images/home/out-story-2.jpg" alt="Slide 3">
+                </div>
+                <div>
+                    <img src="<?= get_template_directory_uri() ?>/assets/images/home/out-story.jpg" alt="Slide 4">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Popup slider PC -->
+
 <?php
 get_footer();
