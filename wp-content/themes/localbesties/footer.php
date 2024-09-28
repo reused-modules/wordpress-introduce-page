@@ -1,8 +1,8 @@
 
 <?php
-    $our_story_post = $args['our_story_post'];
-    $local_perspective_post = $args['local_perspective_post'];
-    $hidden_gems_post = $args['hidden_gems_post'];
+    $our_story_post = get_post_by_name('our-story');
+    $local_perspective_post = get_post_by_name('local-perspective');
+    $hidden_gems_post = get_post_by_name('hidden-gems');
 ?>
 <footer>
     <div class="container">
