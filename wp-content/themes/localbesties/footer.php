@@ -42,11 +42,11 @@
             <div class="col-link">
                 <h4>Travel Blogs</h4>
                 <ul>
-                    <li><a href="/plan">Plan</a></li>
-                    <li><a href="/visit">Visit</a></li>
-                    <li><a href="/eat">Eat</a></li>
-                    <li><a href="/dip">Dip</a></li>
-                    <li><a href="/shop">Shop</a></li>
+                    <li><a href="<?= get_category_link( get_cat_ID( 'plan' ) ) ?>">Plan</a></li>
+                    <li><a href="<?= get_category_link( get_cat_ID( 'visit' ) ) ?>">Visit</a></li>
+                    <li><a href="<?= get_category_link( get_cat_ID( 'eat' ) ) ?>">Eat</a></li>
+                    <li><a href="<?= get_category_link( get_cat_ID( 'dip' ) ) ?>">Dip</a></li>
+                    <li><a href="<?= get_category_link( get_cat_ID( 'shop' ) ) ?>">Shop</a></li>
                 </ul>
             </div>
             <div class="col-link">
