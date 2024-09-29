@@ -1,11 +1,11 @@
 <?php
 get_header();
-$parent_slug = 'eat';
+$parent_slug = 'visit';
 ?>
 <!-- docs -->
 <div class="bs-docs-header">
     <div class="container">
-        <h1>Eat</h1>
+        <h1>Visit</h1>
     </div>
 </div>
 <!-- /docs -->

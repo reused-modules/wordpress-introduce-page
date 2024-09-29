@@ -1,11 +1,11 @@
 <?php
 get_header();
-$parent_slug = 'eat';
+$parent_slug = 'famous-local-store';
 ?>
 <!-- docs -->
 <div class="bs-docs-header">
     <div class="container">
-        <h1>Eat</h1>
+        <h1>Famous local store</h1>
     </div>
 </div>
 <!-- /docs -->
@@ -26,12 +26,6 @@ $parent_slug = 'eat';
         <!-- box category -->
         <?php include_once 'templates/place-by-category-list.php' ?>
         <!-- /box category -->
-
-        <!-- box-explore -->
-        <?php include_once 'templates/explore-blog-list.php' ?>
-        <!-- /box-explore -->
-
-        <?php include_once 'templates/featured-post-link.php' ?>
     </div>
 </main>
 
