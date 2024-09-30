@@ -68,7 +68,6 @@ if (!function_exists('get_featured_post_by_category')) {
     }
 }
 
-add_theme_support('post-thumbnails');
 
 function paginated_category($query)
 {
