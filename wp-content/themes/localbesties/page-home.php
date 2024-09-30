@@ -10,7 +10,7 @@
     $dip_featured_post = get_featured_post_by_category('dip');
 ?>
 <!-- docs -->
-<div class="bs-docs-header">
+<div class="bs-docs-header" style="height: 930px; position: relative; background-image:url(https://wanderland.qodeinteractive.com/wp-content/uploads/2019/11/h1-rev-slide1-bckg.jpg);">
     <div class="container">
         <h1>Welcome to The Local Besties</h1>
         <p>Hi, this is Ryan from The Local Besties. I create this travel blog to help travelers discover hidden gems and authentic encounters through locals’ eyes.</p>
@@ -18,7 +18,9 @@
             <a href="#" class="btn btn-primary">Get Started</a>
         </div>
     </div>
+    <div class="bg-tranfer"></div>
 </div>
+
 <!-- /docs -->
 
 <main>
