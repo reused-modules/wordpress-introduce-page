@@ -83,7 +83,7 @@ $featured_posts = get_featured_post_by_category($parent_category_slug, 4);
             </div>
             <!-- /box cat list -->
 
-            <?php include_once 'pagination.php' ?>
+            <?php include_once 'templates/pagination.php' ?>
         </div>
         <!-- /box category -->
 

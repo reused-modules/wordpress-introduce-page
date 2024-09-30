@@ -11,7 +11,7 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $args = array(
     'post_type' => 'post',
     'category_name' => $term->slug,
-    'posts_per_page' => 1,
+    'posts_per_page' => 8,
     'paged' => $paged,
     'orderby' => 'date',
     'order' => 'DESC'
@@ -89,7 +89,7 @@ $actual_link = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP
         </div>
         <!-- /box-explore -->
 
-        <?php include_once 'pagination.php' ?>
+        <?php include_once 'templates/pagination.php' ?>
     </div>
 </main>
 
