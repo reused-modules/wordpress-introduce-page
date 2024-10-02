@@ -9,8 +9,6 @@
     $eat_featured_post = get_featured_post_by_category('eat');
     $dip_featured_post = get_featured_post_by_category('dip');
     $home_settings = get_home_page_settings();
-//    echo '<pre>';
-//    print_r( $home_settings );die;
     $title = $home_settings->post_title ?? 'Welcome to The Local Besties';
     $introduce = $home_settings->post_content ?? 'Hi, this is Ryan from The Local Besties. I create this travel blog to help travelers discover hidden gems and authentic encounters through locals’ eyes.';
     $background_image = get_the_post_thumbnail_url($home_settings->ID, 'full') ?? 'https://wanderland.qodeinteractive.com/wp-content/uploads/2019/11/h1-rev-slide1-bckg.jpg';
