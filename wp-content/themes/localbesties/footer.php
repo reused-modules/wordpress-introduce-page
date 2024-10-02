@@ -105,6 +105,16 @@
     }
 
     $(document).ready(function() {
+        $('.location').on('change', function () {
+            let search_params = new URLSearchParams(window.location.search);
+            window.location.href = window.location.origin + window.location.pathname + '?location=' + ($(this).val() ? $(this).val() : '') + (search_params.has('post_type') ? '&post_type=' + search_params.get('post_type') : '');
+        });
+
+        $('.category-child').on('change', function () {
+            let location = $('.location').val();
+            window.location.href = $(this).val() + (location ? '?location=' + location : '');
+        });
+
         // menu
         $( "#menu-pc li" ).hover(function() {
             $( this ).addClass('active');

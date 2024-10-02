@@ -97,7 +97,8 @@ if (!function_exists('get_places_by_category_slug')) {
             'category_name' => $slug,
             'posts_per_page' => $limit,
             'orderby' => 'date',
-            'order' => 'DESC'
+            'order' => 'DESC',
+            'location' => get_query_var('location')
         );
 
         return new WP_Query($args);
@@ -112,7 +113,8 @@ if (!function_exists('get_blogs_by_category_slug')) {
             'category_name' => $slug,
             'posts_per_page' => $limit,
             'orderby' => 'date',
-            'order' => 'DESC'
+            'order' => 'DESC',
+            'location' => get_query_var('location')
         );
 
         return new WP_Query($args);

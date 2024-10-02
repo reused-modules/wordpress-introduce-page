@@ -11,16 +11,7 @@ $parent_slug = 'famous-local-store';
 <!-- /docs -->
 
 <main>
-    <div class="box-category-header">
-        <div class="container">
-            <div class="box-cat">
-                <h2>Where you intend to go</h2>
-                <select class="form-select" name="sel-city">
-                    <option value="hn ">Ha noi</option>
-                </select>
-            </div>
-        </div>
-    </div>
+    <?php include_once 'templates/location.php' ?>
 
     <div class="container">
         <!-- box category -->
@@ -35,6 +26,7 @@ $parent_slug = 'famous-local-store';
         height: 290px;
     }
 </style>
+
 <?php
 get_footer();
 ?>

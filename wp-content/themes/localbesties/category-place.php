@@ -10,10 +10,12 @@ $args = array(
     'posts_per_page' => 12,
     'paged' => $paged,
     'orderby' => 'date',
-    'order' => 'DESC'
+    'order' => 'DESC',
+    'location' => get_query_var('location')
 );
 
 $the_query = new WP_Query($args);
+
 $child_categories = get_terms(
     array(
         'taxonomy' => 'category',
@@ -37,16 +39,7 @@ $featured_posts = get_featured_post_by_category($parent_category_slug, 4);
 <!-- /docs -->
 
 <main>
-    <div class="box-category-header">
-        <div class="container">
-            <div class="box-cat">
-                <h2>Where you intend to go</h2>
-                <select class="form-select" name="sel-city">
-                    <option value="hn ">Ha noi</option>
-                </select>
-            </div>
-        </div>
-    </div>
+    <?php include_once 'templates/location.php' ?>
 
     <div class="container">
         <!-- box category -->

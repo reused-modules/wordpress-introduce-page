@@ -14,7 +14,8 @@ $args = array(
     'posts_per_page' => 8,
     'paged' => $paged,
     'orderby' => 'date',
-    'order' => 'DESC'
+    'order' => 'DESC',
+    'location' => get_query_var('location')
 );
 
 $the_query = new WP_Query($args);
@@ -30,7 +31,7 @@ if ($term->parent) {
     $parent_category_slug = get_term($term->parent, 'category')->slug;
 }
 
-$actual_link = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$actual_link = strtok((empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", '?');
 ?>
 <!-- docs -->
 <div class="bs-docs-header">
@@ -41,22 +42,12 @@ $actual_link = (empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERVER[HTTP
 <!-- /docs -->
 
 <main>
-    <div class="box-category-header">
-        <div class="container">
-            <div class="box-cat">
-                <h2>Where you intend to go</h2>
-                <select class="form-select" name="sel-city">
-                    <option value="hn ">Ha noi</option>
-                </select>
-            </div>
-        </div>
-    </div>
+    <?php include_once 'templates/location.php' ?>
 
     <div class="container">
         <div class="box-article-header">
             <h2>What type of article are you interested in?</h2>
-            <select class="form-select" name="sel-article"
-                    onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+            <select class="form-select category-child" name="category-child">
                 <option value="<?php echo get_url_category($parent_category_slug) ?>">Select Articles</option>
                 <?php foreach ($child_categories as $child_category):
                     $value = get_url_category($parent_category_slug, $child_category->slug);
