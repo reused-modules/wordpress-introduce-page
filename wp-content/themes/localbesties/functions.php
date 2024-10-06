@@ -82,11 +82,15 @@ add_action('pre_get_posts', 'paginated_category');
 
 function get_url_category($parent_slug, $child_slug = '')
 {
+    $location = '';
+    if (!empty($_GET['location'])) {
+        $location = '?location=' . $_GET['location'];
+    }
     $url_category = get_home_url() . '/category/' . $parent_slug . '/';
     if ($child_slug) {
-        return $url_category . $child_slug . '/';
+        return $url_category . $child_slug . '/' . $location;
     }
-    return $url_category;
+    return $url_category . $location;
 }
 
 if (!function_exists('get_places_by_category_slug')) {
