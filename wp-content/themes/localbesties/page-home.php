@@ -8,12 +8,16 @@
     $visit_featured_post = get_featured_post_by_category('visit');
     $eat_featured_post = get_featured_post_by_category('eat');
     $dip_featured_post = get_featured_post_by_category('dip');
+    $home_settings = get_home_page_settings();
+    $title = $home_settings->post_title ?? 'Welcome to The Local Besties';
+    $introduce = $home_settings->post_content ?? 'Hi, this is Ryan from The Local Besties. I create this travel blog to help travelers discover hidden gems and authentic encounters through locals’ eyes.';
+    $background_image = get_the_post_thumbnail_url($home_settings->ID, 'full') ?? 'https://wanderland.qodeinteractive.com/wp-content/uploads/2019/11/h1-rev-slide1-bckg.jpg';
 ?>
 <!-- docs -->
-<div class="bs-docs-header" style="height: 930px; position: relative; background-image:url(https://wanderland.qodeinteractive.com/wp-content/uploads/2019/11/h1-rev-slide1-bckg.jpg);">
+<div class="bs-docs-header" style="height: 930px; position: relative; background-image:url(<?= $background_image ?>);">
     <div class="container">
-        <h1>Welcome to The Local Besties</h1>
-        <p>Hi, this is Ryan from The Local Besties. I create this travel blog to help travelers discover hidden gems and authentic encounters through locals’ eyes.</p>
+        <h1><?= $title ?></h1>
+        <p><?= $introduce ?></p>
         <div class="btn-link">
             <a href="#" class="btn btn-primary">Get Started</a>
         </div>
@@ -34,24 +38,24 @@
 
             <div class="row box-explore-body">
                 <div class="col-xl-3 col-md-6 col-12">
-                    <a href="#" class="box-ex-img"><img src="<?= get_template_directory_uri() ?>/assets/images/home/img1.jpg" width="290"/></a>
+                    <a href="#" class="box-ex-img"><img src="<?= get_field('plan_image', $home_settings->ID) ?>" width="290"/></a>
                     <h2><a href="#">Plan</a></h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <p><?php echo get_field('plan_introduce', $home_settings->ID); ?></p>
                 </div>
                 <div class="col-xl-3 col-md-6 col-12">
-                    <a href="#" class="box-ex-img"><img src="<?= get_template_directory_uri() ?>/assets/images/home/img1.jpg" width="290"/></a>
-                    <h2><a href="#">Plan</a></h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <a href="#" class="box-ex-img"><img src="<?= get_field('visit_image', $home_settings->ID) ?>" width="290"/></a>
+                    <h2><a href="#">Visit</a></h2>
+                    <p><?php echo wp_kses_post ( get_field('visit_introduce', $home_settings->ID) ); ?></p>
                 </div>
                 <div class="col-xl-3 col-md-6 col-12">
-                    <a href="#" class="box-ex-img"><img src="<?= get_template_directory_uri() ?>/assets/images/home/img1.jpg" width="290"/></a>
-                    <h2><a href="#">Plan</a></h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <a href="#" class="box-ex-img"><img src="<?= get_field('eat_image', $home_settings->ID) ?>" width="290"/></a>
+                    <h2><a href="#">Eat</a></h2>
+                    <p><?php echo wp_kses_post ( get_field('eat_introduce', $home_settings->ID) ); ?></p>
                 </div>
                 <div class="col-xl-3 col-md-6 col-12">
-                    <a href="#" class="box-ex-img"><img src="<?= get_template_directory_uri() ?>/assets/images/home/img1.jpg" width="290"/></a>
-                    <h2><a href="#">Plan</a></h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <a href="#" class="box-ex-img"><img src="<?= get_field('dip_image', $home_settings->ID) ?>" width="290"/></a>
+                    <h2><a href="#">Dip</a></h2>
+                    <p><?php echo wp_kses_post ( get_field('dip_introduce', $home_settings->ID) ); ?></p>
                 </div>
             </div>
         </div>
