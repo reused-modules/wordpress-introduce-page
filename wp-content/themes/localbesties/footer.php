@@ -1,8 +1,8 @@
 
 <?php
-    $our_story_post = $args['our_story_post'];
-    $local_perspective_post = $args['local_perspective_post'];
-    $hidden_gems_post = $args['hidden_gems_post'];
+    $our_story_post = get_post_by_name('our-story');
+    $local_perspective_post = get_post_by_name('local-perspective');
+    $hidden_gems_post = get_post_by_name('hidden-gems');
 ?>
 <footer>
     <div class="container">
@@ -95,7 +95,15 @@
 
 <div class="bg-menu-show"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- Slick JS -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
 <script>
+    function openDialog() {
+        $('.bg-popup-slider').fadeIn();
+        $('.popup-slider').css('visibility', 'visible');
+    }
+
     $(document).ready(function() {
         // menu
         $( "#menu-pc li" ).hover(function() {
@@ -123,13 +131,20 @@
         });
 
         // hide show language
-
         $('.language-current').click(function() {
             let ul = $('.box-language').find('ul')
             if ($(ul).hasClass('en-hide')) {
                 $(ul).removeClass('en-hide')
                 $(ul).addClass('en-show')
             } else {
+                $(ul).removeClass('en-show')
+                $(ul).addClass('en-hide')
+            }
+        });
+        // hide language click outsite
+        $(document).on('click', function (e) {
+            if (!$(e.target).closest('.language-current').length) {
+                let ul = $('.box-language').find('ul')
                 $(ul).removeClass('en-show')
                 $(ul).addClass('en-hide')
             }
@@ -144,7 +159,26 @@
             $('.bg-menu-show').removeClass('op-show')
             $('.menu-sp').removeClass('menu-open')
         });
+
+        // show dialog eat detail slider
+        $('#popup-slider').slick({
+            infinite: true,
+            centerPadding: '5px',
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            dots: false,
+            arrows: true
+        });
+        $('.popup-slider-close').click(function() {
+            $('.bg-popup-slider').fadeOut();
+            $('.popup-slider').css('visibility', 'hidden');
+        });
+        $('.box-slider-sp').slick({
+            dots: true,
+            arrows: true
+        });
     });
 </script>
+
 </body>
 </html>

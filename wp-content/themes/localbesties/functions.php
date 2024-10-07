@@ -98,6 +98,34 @@ if (!function_exists('get_blogs_by_category_slug')) {
     }
 }
 
+if (!function_exists('get_posts_by_location')) {
+    function get_posts_by_location(string $category_name, string $location, bool $is_custom = false, int $limit = 1)
+    {
+        $query = new WP_Query([
+            "post_type" => 'post',
+            "category_name" => $category_name,
+            'posts_per_page' => $limit,
+            'orderby' => 'date',
+            'order' => 'DESC',
+            'meta_query' => array(
+                array(
+                    'key' => 'custom',
+                    'value' => $is_custom ? 1 : 0
+                )
+            ),
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'location',
+                    'field' => 'slug',
+                    'terms' => $location,
+                ),
+            )
+        ]);
+
+        return $query->have_posts() ? ($limit > 1 ? $query->posts : reset($query->posts)) : null;
+    }
+}
+
 function get_url_category($parent_slug, $child_slug = '')
 {
     $url_category = get_home_url() . '/category/' . $parent_slug . '/';
