@@ -68,7 +68,6 @@ if (!function_exists('get_featured_post_by_category')) {
     }
 }
 
-
 function paginated_category($query)
 {
     if (!is_admin() && $query->is_main_query()) {

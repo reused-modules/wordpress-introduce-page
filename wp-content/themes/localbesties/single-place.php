@@ -1,5 +1,14 @@
 <?php
 get_header();
+$slides = [get_the_post_thumbnail_url()];
+for ( $i = 1; $i < 10; $i++ ) {
+    if( get_field('slide_' . $i)) {
+        $slides[] = get_field('slide_' . $i);
+    }
+}
+// get only 3 slides
+$tmp_slides = $slides;
+$main_slides = array_splice($tmp_slides, 0, 3);
 ?>
     <main>
         <div class="container">
@@ -14,20 +23,26 @@ get_header();
 
         <div class="box-location">
             <div class="box-location-img">
-                <a href="javascript:void(0);" onclick="openDialog()"><img src="<?= get_template_directory_uri() ?>/assets/images/home/out-story-2.jpg"/></a>
-                <a href="javascript:void(0);" onclick="openDialog()"><img src="<?= get_template_directory_uri() ?>/assets/images/home/out-story.jpg"/></a>
-                <a href="javascript:void(0);" onclick="openDialog()"><img src="<?= get_template_directory_uri() ?>/assets/images/home/out-story-2.jpg"/></a>
+                <?php
+                    foreach ( $main_slides as $slide ) {
+                        ?>
+                        <a href="javascript:void(0);" onclick="openDialog()"><img src="<?= $slide ?>" width="678" height="451" /></a>
+                        <?php
+                    }
+                ?>
             </div>
         </div>
         <div class="container">
             <!-- slider sp -->
             <div class="box-location-img-sp">
                 <div class="box-slider-sp">
-                    <div><img src="<?= get_template_directory_uri() ?>/assets/images/home/out-story-2.jpg" /></div>
-                    <div><img src="<?= get_template_directory_uri() ?>/assets/images/home/out-story.jpg" /></div>
-                    <div><img src="<?= get_template_directory_uri() ?>/assets/images/home/out-story-2.jpg" /></div>
-                    <div><img src="<?= get_template_directory_uri() ?>/assets/images/home/out-story.jpg" /></div>
-                    <div><img src="<?= get_template_directory_uri() ?>/assets/images/home/out-story-2.jpg" /></div>
+                    <?php
+                        foreach ($slides as $slide) {
+                            ?>
+                            <div><img src="<?= $slide ?>" width="336" height="243"" /></div>
+                            <?php
+                        }
+                    ?>
                 </div>
             </div>
             <!-- /slider sp -->
@@ -35,7 +50,12 @@ get_header();
                 <div class="local-info">
                     <h3>Dish</h3>
                     <div class="local-address"><?php echo esc_html( get_field('address') ); ?></div>
-                    <div class="local-price"><?php echo esc_html( number_format_i18n(get_field('price') )); ?> vnđ</div>
+                    <?php if (get_field('price')) {
+                        ?>
+                        <div class="local-price"><?php echo esc_html( number_format_i18n(get_field('price') )); ?> vnđ</div>
+                        <?php
+                    } ?>
+
                     <div class="local-desc">
                         <p><?php the_content() ?></p>
                     </div>
@@ -60,18 +80,15 @@ get_header();
             <h1>close</h1>
             <div class="popup-slider-close"><i class="fa fa-times" aria-hidden="true"></i></div>
             <div class="popup-slider-body" id="popup-slider">
-                <div>
-                    <img src="<?= get_template_directory_uri() ?>/assets/images/home/out-story-2.jpg" alt="Slide 1">
-                </div>
-                <div>
-                    <img src="<?= get_template_directory_uri() ?>/assets/images/home/out-story.jpg" alt="Slide 2">
-                </div>
-                <div>
-                    <img src="<?= get_template_directory_uri() ?>/assets/images/home/out-story-2.jpg" alt="Slide 3">
-                </div>
-                <div>
-                    <img src="<?= get_template_directory_uri() ?>/assets/images/home/out-story.jpg" alt="Slide 4">
-                </div>
+                <?php
+                foreach ($slides as $key => $slide) {
+                    ?>
+                    <div>
+                        <img src="<?= $slide ?>" alt="Slide <?= $key + 1; ?>" width="678" height="451">
+                    </div>
+                    <?php
+                }
+                ?>
             </div>
         </div>
     </div>
