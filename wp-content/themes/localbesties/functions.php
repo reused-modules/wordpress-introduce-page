@@ -68,6 +68,36 @@ if (!function_exists('get_featured_post_by_category')) {
     }
 }
 
+if (!function_exists('get_places_by_category_slug')) {
+    function get_places_by_category_slug(string $slug, int $limit = 4)
+    {
+        $args = array(
+            'post_type' => 'place',
+            'category_name' => $slug,
+            'posts_per_page' => $limit,
+            'orderby' => 'date',
+            'order' => 'DESC'
+        );
+
+        return new WP_Query($args);
+    }
+}
+
+if (!function_exists('get_blogs_by_category_slug')) {
+    function get_blogs_by_category_slug(string $slug, int $limit = 4)
+    {
+        $args = array(
+            'post_type' => 'post',
+            'category_name' => $slug,
+            'posts_per_page' => $limit,
+            'orderby' => 'date',
+            'order' => 'DESC'
+        );
+
+        return new WP_Query($args);
+    }
+}
+
 if (!function_exists('get_posts_by_location')) {
     function get_posts_by_location(string $category_name, string $location, bool $is_custom = false, int $limit = 1)
     {
