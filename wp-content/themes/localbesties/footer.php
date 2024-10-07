@@ -162,7 +162,6 @@
 
         // open menu sp
         $('.menu-open-sp').click(function() {
-            alert('aaa');
             $('.bg-menu-show').addClass('op-show')
             $('.menu-sp').addClass('menu-open')
         });

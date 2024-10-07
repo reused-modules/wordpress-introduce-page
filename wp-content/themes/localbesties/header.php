@@ -4,10 +4,6 @@
     $menu = get_term( $locations['primary-menu'], 'nav_menu' );
     $menu_items = wp_get_nav_menu_items($menu->term_id);
     $menu_items = recursive_mitems_to_array( $menu_items );
-//    echo
-//    $pages = wp_nav_menu(['theme_location' => 'primary-menu']);
-//    echo '<pre>';
-//    print_r($menu_items);die;
 ?>
 <!-- header -->
 <header class="navbar navbar-static-top bs-docs-nav" id="top">

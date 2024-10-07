@@ -68,7 +68,6 @@ if (!function_exists('get_featured_post_by_category')) {
     }
 }
 
-
 function paginated_category($query)
 {
     if (!is_admin() && $query->is_main_query()) {
@@ -150,5 +149,19 @@ if (!function_exists('get_posts_by_location')) {
         ]);
 
         return $query->have_posts() ? ($limit > 1 ? $query->posts : reset($query->posts)) : null;
+    }
+}
+
+if (!function_exists('get_home_page_settings')) {
+    function get_home_page_settings()
+    {
+        $query = new WP_Query([
+            "post_type" => 'home-setting',
+            'posts_per_page' => 1,
+            'orderby' => 'date',
+            'order' => 'DESC'
+        ]);
+
+        return $query->have_posts() ? reset($query->posts) : null;
     }
 }
