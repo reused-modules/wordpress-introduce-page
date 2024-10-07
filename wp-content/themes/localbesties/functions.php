@@ -67,3 +67,12 @@ if (!function_exists('get_featured_post_by_category')) {
         return $query->have_posts() ? ($limit > 1 ? $query->posts : reset($query->posts)) : null;
     }
 }
+
+function get_url_category($parent_slug, $child_slug = '')
+{
+    $url_category = get_home_url() . '/category/' . $parent_slug . '/';
+    if ($child_slug) {
+        return $url_category . $child_slug . '/';
+    }
+    return $url_category;
+}
