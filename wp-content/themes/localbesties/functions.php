@@ -68,6 +68,26 @@ if (!function_exists('get_featured_post_by_category')) {
     }
 }
 
+function paginated_category($query)
+{
+    if (!is_admin() && $query->is_main_query()) {
+        if ($query->is_category()) {
+            $query->set('posts_per_page', 8);
+        }
+    }
+}
+
+add_action('pre_get_posts', 'paginated_category');
+
+function get_url_category($parent_slug, $child_slug = '')
+{
+    $url_category = get_home_url() . '/category/' . $parent_slug . '/';
+    if ($child_slug) {
+        return $url_category . $child_slug . '/';
+    }
+    return $url_category;
+}
+
 if (!function_exists('get_places_by_category_slug')) {
     function get_places_by_category_slug(string $slug, int $limit = 4)
     {
@@ -124,13 +144,4 @@ if (!function_exists('get_posts_by_location')) {
 
         return $query->have_posts() ? ($limit > 1 ? $query->posts : reset($query->posts)) : null;
     }
-}
-
-function get_url_category($parent_slug, $child_slug = '')
-{
-    $url_category = get_home_url() . '/category/' . $parent_slug . '/';
-    if ($child_slug) {
-        return $url_category . $child_slug . '/';
-    }
-    return $url_category;
 }

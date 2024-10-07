@@ -22,7 +22,7 @@
                     <div class="box-join-us-body">
                         <div class="box-join-us-form">
                             <select class="form-select" aria-label="Default select example" style="width: 184px;">
-                                <option selected>Coutry</option>
+                                <option selected>Country</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
