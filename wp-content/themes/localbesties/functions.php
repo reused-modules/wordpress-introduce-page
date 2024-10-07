@@ -68,8 +68,6 @@ if (!function_exists('get_featured_post_by_category')) {
     }
 }
 
-add_theme_support('post-thumbnails');
-
 function paginated_category($query)
 {
     if (!is_admin() && $query->is_main_query()) {
@@ -90,6 +88,21 @@ function get_url_category($parent_slug, $child_slug = '')
     return $url_category;
 }
 
+if (!function_exists('get_places_by_category_slug')) {
+    function get_places_by_category_slug(string $slug, int $limit = 4)
+    {
+        $args = array(
+            'post_type' => 'place',
+            'category_name' => $slug,
+            'posts_per_page' => $limit,
+            'orderby' => 'date',
+            'order' => 'DESC'
+        );
+
+        return new WP_Query($args);
+    }
+}
+
 if (!function_exists('get_blogs_by_category_slug')) {
     function get_blogs_by_category_slug(string $slug, int $limit = 4)
     {
@@ -102,5 +115,33 @@ if (!function_exists('get_blogs_by_category_slug')) {
         );
 
         return new WP_Query($args);
+    }
+}
+
+if (!function_exists('get_posts_by_location')) {
+    function get_posts_by_location(string $category_name, string $location, bool $is_custom = false, int $limit = 1)
+    {
+        $query = new WP_Query([
+            "post_type" => 'post',
+            "category_name" => $category_name,
+            'posts_per_page' => $limit,
+            'orderby' => 'date',
+            'order' => 'DESC',
+            'meta_query' => array(
+                array(
+                    'key' => 'custom',
+                    'value' => $is_custom ? 1 : 0
+                )
+            ),
+            'tax_query' => array(
+                array(
+                    'taxonomy' => 'location',
+                    'field' => 'slug',
+                    'terms' => $location,
+                ),
+            )
+        ]);
+
+        return $query->have_posts() ? ($limit > 1 ? $query->posts : reset($query->posts)) : null;
     }
 }
