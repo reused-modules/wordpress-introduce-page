@@ -165,3 +165,11 @@ if (!function_exists('get_home_page_settings')) {
         return $query->have_posts() ? reset($query->posts) : null;
     }
 }
+
+function reverse_categories($terms, $id, $taxonomy){
+    if($taxonomy == 'category'){
+        $terms = array_reverse($terms, true);
+    }
+    return $terms;
+}
+add_filter('get_the_terms', 'reverse_categories', 10, 3);
