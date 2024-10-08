@@ -110,6 +110,16 @@
             window.location.href = window.location.origin + window.location.pathname + '?location=' + ($(this).val() ? $(this).val() : '') + (search_params.has('post_type') ? '&post_type=' + search_params.get('post_type') : '');
         });
 
+        $('.box-breadcrumb .post-categories').addClass('breadcrumb');
+        if (window.location.pathname.includes('place')) {
+            let first_breadcrumb = $('.box-breadcrumb .post-categories li:first-child a');
+            let second_breadcrumb = $('.box-breadcrumb .post-categories li:nth-child(2) a');
+            let url_page = first_breadcrumb.attr('href');
+            url_page = url_page.replace('/category', '');
+            first_breadcrumb.attr('href', url_page);
+            second_breadcrumb.attr('href', second_breadcrumb.attr('href') + '?post_type=place');
+        }
+
         $('.category-child').on('change', function () {
             let location = $('.location').val();
             window.location.href = $(this).val() + (location ? '?location=' + location : '');

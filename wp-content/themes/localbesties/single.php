@@ -3,13 +3,7 @@ get_header();
 ?>
 <main>
     <div class="container">
-        <div class="box-breadcrumb">
-            <ul class="breadcrumb">
-                <li><a href="#">< Articles</a></li>
-                <li><a href="#">Plan</a></li>
-                <li>Solo travel</li>
-            </ul>
-        </div>
+        <?php include_once 'templates/breadcrumb.php' ?>
 
         <div class="box-article">
             <div class="box-article-image-first">
