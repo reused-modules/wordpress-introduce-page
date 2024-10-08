@@ -81,11 +81,15 @@ add_action('pre_get_posts', 'paginated_category');
 
 function get_url_category($parent_slug, $child_slug = '')
 {
+    $location = '';
+    if (!empty($_GET['location'])) {
+        $location = '?location=' . $_GET['location'];
+    }
     $url_category = get_home_url() . '/category/' . $parent_slug . '/';
     if ($child_slug) {
-        return $url_category . $child_slug . '/';
+        return $url_category . $child_slug . '/' . $location;
     }
-    return $url_category;
+    return $url_category . $location;
 }
 
 if (!function_exists('get_places_by_category_slug')) {
@@ -96,7 +100,8 @@ if (!function_exists('get_places_by_category_slug')) {
             'category_name' => $slug,
             'posts_per_page' => $limit,
             'orderby' => 'date',
-            'order' => 'DESC'
+            'order' => 'DESC',
+            'location' => get_query_var('location')
         );
 
         return new WP_Query($args);
@@ -111,7 +116,8 @@ if (!function_exists('get_blogs_by_category_slug')) {
             'category_name' => $slug,
             'posts_per_page' => $limit,
             'orderby' => 'date',
-            'order' => 'DESC'
+            'order' => 'DESC',
+            'location' => get_query_var('location')
         );
 
         return new WP_Query($args);
@@ -159,3 +165,11 @@ if (!function_exists('get_home_page_settings')) {
         return $query->have_posts() ? reset($query->posts) : null;
     }
 }
+
+function reverse_categories($terms, $id, $taxonomy){
+    if($taxonomy == 'category'){
+        $terms = array_reverse($terms, true);
+    }
+    return $terms;
+}
+add_filter('get_the_terms', 'reverse_categories', 10, 3);

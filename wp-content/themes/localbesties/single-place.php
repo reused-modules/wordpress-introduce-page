@@ -12,13 +12,7 @@ $main_slides = array_splice($tmp_slides, 0, 3);
 ?>
     <main>
         <div class="container">
-            <div class="box-breadcrumb">
-                <ul class="breadcrumb">
-                    <li><a href="#">< Articles</a></li>
-                    <li><a href="#">Plan</a></li>
-                    <li>Solo travel</li>
-                </ul>
-            </div>
+            <?php include_once 'templates/breadcrumb.php' ?>
         </div>
 
         <div class="box-location">
@@ -39,7 +33,7 @@ $main_slides = array_splice($tmp_slides, 0, 3);
                     <?php
                         foreach ($slides as $slide) {
                             ?>
-                            <div><img src="<?= $slide ?>" width="336" height="243"" /></div>
+                            <div><img src="<?= $slide ?>" width="336" height="243"/></div>
                             <?php
                         }
                     ?>
@@ -48,7 +42,7 @@ $main_slides = array_splice($tmp_slides, 0, 3);
             <!-- /slider sp -->
             <div class="box-location-content">
                 <div class="local-info">
-                    <h3>Dish</h3>
+                    <h3><?php the_title() ?></h3>
                     <div class="local-address"><?php echo esc_html( get_field('address') ); ?></div>
                     <?php if (get_field('price')) {
                         ?>
