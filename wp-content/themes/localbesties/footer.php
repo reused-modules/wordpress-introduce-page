@@ -79,10 +79,10 @@
                     <li><a href="#">ask@saltinourhair.com</a></li>
                 </ul>
                 <div class="box-social">
-                    <a href="#"><img src="<?= get_template_directory_uri() ?>/assets/images/social/instagram.png"></a>
+                    <a href="https://www.instagram.com/thelocalbesties/"><img src="<?= get_template_directory_uri() ?>/assets/images/social/instagram.png"></a>
                     <a href="#"><img src="<?= get_template_directory_uri() ?>/assets/images/social/youtube.png"></a>
                     <a href="#"><img src="<?= get_template_directory_uri() ?>/assets/images/social/pinterest.png"></a>
-                    <a href="#"><img src="<?= get_template_directory_uri() ?>/assets/images/social/fb.png"></a>
+                    <a href="https://www.facebook.com/TheLocalBesties/"><img src="<?= get_template_directory_uri() ?>/assets/images/social/fb.png"></a>
                 </div>
             </div>
         </div>
