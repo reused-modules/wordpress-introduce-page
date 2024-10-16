@@ -166,10 +166,14 @@ if (!function_exists('get_home_page_settings')) {
     }
 }
 
-function reverse_categories($terms, $id, $taxonomy){
+function custom_category_order($terms, $id, $taxonomy){
     if($taxonomy == 'category'){
-        $terms = array_reverse($terms, true);
+		// Sắp xếp lại danh mục: danh mục cha trước, rồi đến các danh mục con
+		usort( $terms, function( $a, $b ) {
+			// So sánh số lượng cấp của danh mục
+			return $a->parent > $b->parent;
+		} );
     }
     return $terms;
 }
-add_filter('get_the_terms', 'reverse_categories', 10, 3);
+add_filter( 'get_the_terms', 'custom_category_order', 10, 3 );
