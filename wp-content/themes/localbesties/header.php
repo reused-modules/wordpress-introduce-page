@@ -6,12 +6,14 @@
     $menu_items = recursive_mitems_to_array( $menu_items );
 ?>
 <!-- header -->
-<header class="navbar navbar-static-top bs-docs-nav" id="top">
+<header class="navbar navbar-static-top bs-docs-nav article-detail" id="top">
     <div class="container">
         <div class="navbar-header">
-            <a href="/" class="navbar-brand">
-                <img src="<?= get_template_directory_uri() ?>/assets/images/logo.png" />
+            <!-- logo page other -->
+            <a href="/">
+                <img src="<?= get_template_directory_uri() ?>/assets/images/logo-header.png" />
             </a>
+            <!-- /logo page other -->
         </div>
         <?php
             get_template_part( 'templates/menu', 'pc', ['menu_items' => $menu_items]  );
@@ -22,12 +24,19 @@
         ?>
 
         <!-- box language pc -->
-        <div class="box-language">
-            <a href="#" class="language-current"><span>EN</span></a>
-            <ul class="en-hide">
-                <li><a href="#">English</a></li>
-                <li><a href="#">Viet nam</a></li>
-            </ul>
+        <div class="box-language-search">
+            <div class="box-search">
+                <img class="icon-search" src="<?= get_template_directory_uri() ?>/assets/images/icon-search.png"/>
+                <input type="text" placeholder="Search"/>
+            </div>
+
+            <div class="box-language">
+                <a href="#" class="language-current"><span>EN</span></a>
+                <ul class="en-hide">
+                    <li><a href="#">English</a></li>
+                    <li><a href="#">Viet nam</a></li>
+                </ul>
+            </div>
         </div>
         <!-- /box language pc -->
 

@@ -10,30 +10,27 @@
             <!-- logo footer -->
             <div class="col-md-6 logo-footer">
                 <a href="#"><img src="<?= get_template_directory_uri() ?>/assets/images/logo-footer.png"></a>
-            </div>
-            <!-- /logo footer -->
 
-            <div class="col-md-6 col-12">
                 <div class="box-join-us">
                     <div class="box-join-us-title">
                         <h3>Join Us Today</h3>
-                        <p>Embark on a journey with us to explore the world through the eyes of a local. Let's travel differently.</p>
+                        <p>Join <strong>The Local Besties</strong> to get travel discount, connect with local besites, and get exclusive stories</p>
                     </div>
                     <div class="box-join-us-body">
                         <div class="box-join-us-form">
-                            <select class="form-select" aria-label="Default select example" style="width: 184px;">
-                                <option selected>Country</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                            <input type="text" class="form-control" placeholder="Your email address"/>
+                            <input type="text" class="form-control us-first-name" placeholder="Your first name"/>
+                            <input type="text" class="form-control us-email-address" placeholder="Your email address"/>
                         </div>
                         <div>
                             <button class="btn">Subscribe</button>
                         </div>
                     </div>
                 </div>
+            </div>
+            <!-- /logo footer -->
+
+            <div class="col-md-6 col-12">
+                <img class="img-radius img-footer" src="<?= get_template_directory_uri() ?>/assets/images/img-footer.png" />
             </div>
         </div>
 
@@ -42,11 +39,9 @@
             <div class="col-link">
                 <h4>Travel Blogs</h4>
                 <ul>
-                    <li><a href="/plan">Plan</a></li>
-                    <li><a href="/visit">Visit</a></li>
-                    <li><a href="/eat">Eat</a></li>
-                    <li><a href="/dip">Dip</a></li>
-                    <li><a href="/shop">Shop</a></li>
+                    <li><a href="#">Bali Travel Guide</a></li>
+                    <li><a href="#">Sri Lanka Travel Guide</a></li>
+                    <li><a href="#">Peru Travel Guide</a></li>
                 </ul>
             </div>
             <div class="col-link">
@@ -76,7 +71,7 @@
             <div class="col-link">
                 <h4>Contact</h4>
                 <ul>
-                    <li><a href="#">ask@saltinourhair.com</a></li>
+                    <li><a href="mailto:ask@thelocalbesties.com">ask@thelocalbesties.com</a></li>
                 </ul>
                 <div class="box-social">
                     <a href="#"><img src="<?= get_template_directory_uri() ?>/assets/images/social/instagram.png"></a>
@@ -86,6 +81,7 @@
                 </div>
             </div>
         </div>
+
         <!-- /boo footer link -->
         <div class="box-copyright">
             Copyright © 2024 The Local Besties
