@@ -9,7 +9,7 @@ $terms = get_the_terms(get_the_ID(), 'location');
         <?php endif; ?>
         <?php if (!empty($categories)) :
             foreach ($categories as $category) :?>
-                <a href="<?php echo esc_url(get_category_link($category->term_id)) ?>"><?php echo esc_html($category->name) ?></a>
+                <a href="<?php echo esc_url(get_category_link($category->term_id) . '?location=' . $terms[0]->slug) ?>"><?php echo esc_html($category->name) ?></a>
             <?php
             endforeach;
         endif; ?>

@@ -41,7 +41,7 @@ $child_category = get_the_category($post->ID)[1];
                                 ?>
                                 <div class="row">
                                     <div class="box-related-list col-xl-12 col-md-12 col-12">
-                                        <a href="#" class="related-img">
+                                        <a href="<?php echo get_permalink() ?>" class="related-img">
                                             <div class="article-image"
                                                  style="background: url(<?php echo get_the_post_thumbnail_url() ?>);"></div>
                                         </a>
@@ -72,19 +72,23 @@ $child_category = get_the_category($post->ID)[1];
                     <h2>Top Picks for You</h2>
                     <div class="row">
                         <?php
-                        $top_picks = get_featured_post_by_category($parent_category->name);
+                        $top_picks = get_featured_post_by_category($parent_category->name, 4);
                         if($top_picks):
+                            foreach ($top_picks as $top_pick) {
+                            ?>
+                                <div class="box-related-list col-xl-12 col-md-12 col-12">
+                                    <a href="<?= get_permalink($top_pick->ID) ?>" class="related-img">
+                                        <div class="article-image" style="background: url(<?= get_the_post_thumbnail_url($top_pick->ID) ?>); "></div>
+                                    </a>
+                                    <div class="related-title">
+                                        <div class="box-auth-time"><strong><?php echo get_author_name($top_pick->post_author) ?></strong>. <?php echo date('F j, Y', strtotime($top_pick->post_date)) ?></div>
+                                        <h3><a href="<?= get_permalink($top_pick->ID) ?>"><?php echo $top_pick->post_title ?></a></h3>
+                                    </div>
+                                </div>
+                            <?php
+                            }
+                        endif;
                         ?>
-                        <div class="box-related-list col-xl-12 col-md-12 col-12">
-                            <a href="<?= get_permalink($top_picks->ID) ?>" class="related-img">
-                                <div class="article-image" style="background: url(<?= get_the_post_thumbnail_url($top_picks->ID) ?>); "></div>
-                            </a>
-                            <div class="related-title">
-                                <div class="box-auth-time"><strong><?php echo get_author_name($top_picks->post_author) ?></strong>. <?php echo date('F j, Y', strtotime($top_picks->post_date)) ?></div>
-                                <h3><a href="<?= get_permalink($top_picks->ID) ?>"><?php echo $top_picks->post_title ?></a></h3>
-                            </div>
-                        </div>
-                        <?php endif; ?>
                     </div>
                 </div>
                 <!-- /box related articles -->

@@ -33,6 +33,10 @@ textarea:focus, input:focus{
     outline: none;
 }
 /* BEGIN COMMON */
+img {/* Fix image in content article wordpress */
+    max-width: -webkit-fill-available;
+    height: auto;
+}
 .container {
     max-width: 1440px;
 }
@@ -1474,6 +1478,10 @@ ul.breadcrumb li a:hover {
     font-weight: 400;
     line-height: 130%; /* 41.6px */
     margin-bottom: 16px;
+}
+.related-img .article-image {
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
 }
 .box-related-articles-bottom .related-img .article-image {
     border-radius: 8px;
