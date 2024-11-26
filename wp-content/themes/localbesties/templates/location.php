@@ -1,7 +1,7 @@
 <div class="box-category-header">
     <div class="container">
         <div class="box-cat">
-            <h2>Where you intend to go</h2>
+            <h2>Your Destination </h2>
             <select class="form-select location" name="location">
                 <option value="">All</option>
                 <?php

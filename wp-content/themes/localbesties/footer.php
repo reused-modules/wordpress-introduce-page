@@ -29,8 +29,8 @@
             </div>
             <!-- /logo footer -->
 
-            <div class="col-md-6 col-12">
-                <img class="img-radius img-footer" src="<?= get_template_directory_uri() ?>/assets/images/img-footer.png" />
+            <div class="col-md-6 col-12 text-center">
+                <img class="img-radius img-footer" src="<?= get_template_directory_uri() ?>/assets/images/img-footer.png?ver=1011"  />
             </div>
         </div>
 
