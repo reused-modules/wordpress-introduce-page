@@ -323,6 +323,12 @@ header {
     height: 41px;
     cursor: pointer;
 }
+.page-article .menu-open-sp,
+.page-dip .menu-open-sp {
+    background: url(../images/icon-open-menu-bg-sp.svg) no-repeat;
+    width: 54px;
+    height: 57px;
+}
 /* END MENU SP */
 
 /* BEGIN LANGUAGE */
@@ -503,21 +509,32 @@ header {
     color: #000;
 }
 .page-home .bg-menu .menu-pc .nav-pc li.nav-first a.nav-link,
-.page-eat .bg-menu .menu-pc .nav-pc li.nav-first a.nav-link {
+.page-eat .bg-menu .menu-pc .nav-pc li.nav-first a.nav-link,
+.page-article .bg-menu .menu-pc .nav-pc li.nav-first a.nav-link,
+.page-dip .bg-menu .menu-pc .nav-pc li.nav-first a.nav-link {
     color: #fff;
 }
+
 .page-home .menu-pc .has-child .nav-link,
-.page-eat .menu-pc .has-child .nav-link {
+.page-eat .menu-pc .has-child .nav-link,
+.page-article .menu-pc .has-child .nav-link,
+.page-dip .menu-pc .has-child .nav-link {
     background: url(../images/icon-arrow-down-top.png) right no-repeat;
 }
-.page-eat .navbar {
+.page-eat .navbar,
+.page-article .navbar,
+.page-dip .navbar {
     background: rgba(64, 64, 65, 0.20);
 }
-.page-eat .box-search {
+.page-eat .box-search,
+.page-article .box-search,
+.page-dip .box-search {
     background-color: #fff;
     border: 1px solid #D4D4D4;
 }
-.page-eat .box-language {
+.page-eat .box-language,
+.page-article .box-language,
+.page-dip .box-language {
     background-color: #fff;
     border-radius: 12px;
     padding: 0px 12px;
@@ -539,7 +556,10 @@ header {
     font-weight: 400;
     padding: 10px 51px;
 }
-
+.page-article .bs-docs-header h1,
+.page-dip .bs-docs-header h1 {
+    margin-top: 90px;
+}
 /* END BG MENU */
 
 /* BEGIN BOX EXPLORE */
@@ -809,12 +829,56 @@ footer {
     padding: 18px;
 }
 
+/* ARTICLE */
+.article-list {
+    /* margin-top: ; */
+}
+.article-list .article-list-body {
+    border-radius: 28px;
+    border: 2px solid #ebebeb;
+    margin-bottom: 56px;
+}
+.article-list .article-list-body img {
+    width: 100%;
+    border-top-left-radius: 28px;
+    border-top-right-radius: 28px;
+}
+.article-list .article-list-body .box-auth-time {
+    color: #777;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 8px;
+}
+.article-list .article-list-body h3 {
+    color: #1a1e16;
+    /* Title h2 */
+    font-family: Bauhaus;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.article-list .article-list-body h3 a {
+    color: #1a1e16;
+    text-decoration: none;
+}
+
+
 /* CAT */
 .box-category-header {
     border-bottom: 1px solid #bfbfbf;
     padding-top: 20px;
     padding-bottom: 20px;
     margin-bottom: 80px;
+}
+.page-article .box-category-header {
+    margin-bottom: 56px;
+}
+.page-article .box-article-header {
+    margin-bottom: 56px;
 }
 .box-cat,
 .box-article-header {
@@ -1107,16 +1171,27 @@ footer {
 
 /* BEGIN ARTICLE */
 .box-article-header h2 {
-    color: var(--Neutral-Colors-Headings-Black, #5d5a88);
-    font-feature-settings: "liga" off, "clig" off;
-    font-family: "DM Sans";
+    color: #1A1E16;
+    text-align: center;
+    font-feature-settings: 'liga' off, 'clig' off;
+    /* Title h3 */
+    font-family: "Bauhaus";
     font-size: 32px;
     font-style: normal;
-    font-weight: 00;
-    line-height: 66px; /* 165% */
+    font-weight: 400;
+    line-height: 130%; /* 41.6px */
+    margin-right: 40px;
 }
 .box-article-header .form-select {
-    min-width: 220px;
+    min-width: 380px;
+    color: #404041;
+    text-align: center;
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: "Baloo 2";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px; /* 90% */
 }
 .box-paging {
     display: flex;
@@ -1750,6 +1825,7 @@ ul.breadcrumb li a:hover {
 .related-img .article-image {
     background-repeat: no-repeat !important;
     /* background-size: contain !important; */
+    background-size: cover;
 }
 .box-related-articles-bottom .related-img .article-image {
     border-radius: 8px;
@@ -2031,6 +2107,11 @@ ul.breadcrumb li a:hover {
 }
 
 @media only screen and (max-width: 480px) {
+    .logo-sp img { height: 44px; }
+    .page-article .menu-open-sp,
+    .page-dip .menu-open-sp {
+        background-size: auto;
+    }
     .box-eat-related-articles.box-related-articles .related-img .article-image {
         width: 128px;
         height: 129px;
@@ -2132,6 +2213,10 @@ ul.breadcrumb li a:hover {
     .bs-docs-header h1 {
         font-size: 28px;
     }
+    .page-article .bs-docs-header h1,
+    .page-dip .bs-docs-header h1 {
+        font-size: 80px;
+    }
     .bs-docs-header h2 {
         font-size: 56px;
     }
@@ -2222,6 +2307,6 @@ ul.breadcrumb li a:hover {
         display: block;
     }
     .bg-menu {
-        height: auto;
+        /* height: auto; */
     }
 }

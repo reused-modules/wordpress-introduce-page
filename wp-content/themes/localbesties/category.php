@@ -46,9 +46,11 @@ $actual_link = strtok((empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERV
 
     <div class="container">
         <div class="box-article-header">
-            <h2>What type of article are you interested in?</h2>
+            <h2>Are you interested in?</h2>
             <select class="form-select category-child" name="category-child">
-                <option value="<?php echo get_url_category($parent_category_slug) ?>">Select Articles</option>
+                <option value="<?php echo get_url_category($parent_category_slug) ?>">
+                    At Restaurants Selected by Locals
+                </option>
                 <?php foreach ($child_categories as $child_category):
                     $value = get_url_category($parent_category_slug, $child_category->slug);
                     ?>
@@ -58,18 +60,25 @@ $actual_link = strtok((empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERV
                 <?php endforeach; ?>
             </select>
         </div>
-        <!-- box-explore -->
-        <div class="box-explore">
-            <div class="row box-explore-body">
+
+        <!-- article list -->
+        <div class="article-list">
+            <div class="row">
                 <?php
                 if ($the_query->have_posts()):
                     while ($the_query->have_posts()):
                         $the_query->the_post();
                         ?>
                         <div class="col-xl-3 col-md-6 col-12">
-                            <?php the_post_thumbnail() ?>
-                            <h2><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h2>
-                            <p><?php the_excerpt() ?></p>
+                            <div class="article-list-body">
+                                <a href="<?php the_permalink() ?>" class="box-ex-img"><?php the_post_thumbnail() ?></a>
+                                <div class="box-fea-main">
+                                    <div class="box-auth-time">
+                                        <strong><?php echo get_the_author_meta('display_name') ?></strong>
+                                        . <?php echo get_the_date() ?></div>
+                                    <h3><a href="<?php the_permalink() ?>"><?php the_title() ?></a></h3>
+                                </div>
+                            </div>
                         </div>
                     <?php
                     endwhile;
@@ -78,7 +87,7 @@ $actual_link = strtok((empty($_SERVER['HTTPS']) ? 'http' : 'https') . "://$_SERV
                 ?>
             </div>
         </div>
-        <!-- /box-explore -->
+        <!-- /article list -->
 
         <?php include_once 'templates/pagination.php' ?>
     </div>
