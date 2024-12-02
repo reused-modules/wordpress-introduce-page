@@ -189,9 +189,16 @@
             $('.bg-popup-slider').fadeOut();
             $('.popup-slider').css('visibility', 'hidden');
         });
+        $('.box-location-img').slick({
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            dots: true,
+            arrows: false
+        });
         $('.box-slider-sp').slick({
             dots: true,
-            arrows: true
+            arrows: false
         });
     });
 </script>
