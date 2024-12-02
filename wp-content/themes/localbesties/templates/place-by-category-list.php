@@ -30,7 +30,7 @@
                     <a href="<?php the_permalink(); ?>" class="box-ex-img"><?php the_post_thumbnail() ?></a>
                     <h2><a href="<?php the_permalink(); ?>"><?php the_title() ?></a></h2>
                     <p class="eat-address"><?php echo esc_html( get_field('address') ); ?></p>
-                    <p class="eat-price"><?php echo esc_html( number_format_i18n(get_field('price') )); ?> vnđ</p>
+                    <p class="eat-price">$<?php echo esc_html( number_format_i18n(get_field('min_price') )); ?> - $<?php echo esc_html( number_format_i18n(get_field('max_price') )); ?></p>
                 </div>
             <?php
             endwhile;
